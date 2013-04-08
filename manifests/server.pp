@@ -17,7 +17,7 @@
 #  stdlib
 # Sample Usage:
 #
-#  
+#
 #
 #
 # [Remember: No empty lines between comments and class definition]

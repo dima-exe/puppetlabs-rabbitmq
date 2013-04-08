@@ -1,5 +1,6 @@
 require 'puppet'
-require 'mocha'
+require 'mocha/api'
+
 RSpec.configure do |config|
   config.mock_with :mocha
 end
@@ -41,13 +42,13 @@ EOT
     @provider.instance_variable_set(:@should_vhost, "bar")
     @provider.instance_variable_set(:@should_user, "foo")
     @provider.expects(:rabbitmqctl).with('set_permissions', '-p', 'bar', 'foo', "''", "''", "''")
-    @provider.create 
+    @provider.create
   end
   it 'should destroy permissions' do
     @provider.instance_variable_set(:@should_vhost, "bar")
     @provider.instance_variable_set(:@should_user, "foo")
     @provider.expects(:rabbitmqctl).with('clear_permissions', '-p', 'bar', 'foo')
-    @provider.destroy 
+    @provider.destroy
   end
   {:configure_permission => '1', :write_permission => '3', :read_permission => '2'}.each do |k,v|
     it "should be able to retrieve #{k}" do
