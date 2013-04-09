@@ -39,6 +39,7 @@ Puppet::Type.type(:rabbitmq_user).provide(:rabbitmqctl) do
     tags = get_user_tags
     # prevents resource from being applied on every run if clearing tags with ''
     tags = [''] if tags == []
+    tags
   end
 
   def tags=(state)
